@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,7 +35,7 @@ public class AlbumController {
     }
 
     @GetMapping("/edition/tracks/{id}")
-    public List<TrackDto> getTracksByEdition(@PathVariable Long id) {
-        return trackMapper.toListDto(albumService.getTracksByEdition(id));
+    public Set<TrackDto> getTracksByEdition(@PathVariable Long id) {
+        return trackMapper.toSetDto(albumService.getTracksByEdition(id));
     }
 }

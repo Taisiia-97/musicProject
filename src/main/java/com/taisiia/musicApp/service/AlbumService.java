@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -23,12 +24,12 @@ public class AlbumService {
     }
 
 
-    public List<Track> getTracksByEdition(Long id) {
+    public Set<Track> getTracksByEdition(Long id) {
 
 
-        return List.of((Track) editionRepository.findById(id)
+        return editionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Not found edition"))
-                .getTracks());
+                .getTracks();
     }
 
     public List<Album> getAllAlbums() {
