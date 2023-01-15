@@ -8,7 +8,7 @@ import com.taisiia.musicApp.repository.EditionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,13 +19,20 @@ public class AlbumService {
     public Album findByEdition(Long id) {
         var edition = editionRepository.findById(id).orElseThrow(() -> new NotFoundException("Not found edition"));
         return albumRepository.findAlbumByEditionsContains(edition)
-                        .orElseThrow(() -> new NotFoundException("Not found album"));
+                .orElseThrow(() -> new NotFoundException("Not found album"));
     }
 
 
-    public Set<Track> getTracksByEdition(Long id) {
-        return editionRepository.findById(id)
+    public List<Track> getTracksByEdition(Long id) {
+
+
+        return List.of((Track) editionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Not found edition"))
-                .getTracks();
+                .getTracks());
+    }
+
+    public List<Album> getAllAlbums() {
+
+        return albumRepository.findAll();
     }
 }

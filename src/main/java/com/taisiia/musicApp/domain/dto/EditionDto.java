@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime;
 import java.util.Set;
 
 @Data
@@ -15,5 +16,6 @@ public class EditionDto {
 
     private Set<TrackDto> tracks;
 
-    private Double totalDuration;
+    private LocalTime totalDuration;
+
 }

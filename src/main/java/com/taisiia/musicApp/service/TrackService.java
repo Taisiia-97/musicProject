@@ -13,13 +13,13 @@ import java.util.List;
 public class TrackService {
     private final TrackRepository trackRepository;
 
-    Track findTrackById(Long id) {
+   public Track findTrackById(Long id) {
 
         return trackRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Not Found Track"));
     }
 
-    List<Track> getAllTracks() {
+    public List<Track> getAllTracks() {
         return trackRepository.findAll();
     }
 }

@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
@@ -15,16 +16,20 @@ public interface EditionMapper {
 
     Edition toDao(EditionDto editionDto);
 
-
-    @Mapping(source = "tracks", target = "totalDuration", qualifiedByName = "countDuration")
+    @Mapping(source = "tracks", target = "totalDuration", qualifiedByName = "countTotalDuration")
     EditionDto toDto(Edition edition);
 
-    @Mapping(source = "tracks", target = "totalDuration", qualifiedByName = "countDuration")
+    @Mapping(source = "tracks", target = "totalDuration", qualifiedByName = "countTotalDuration")
     List<EditionDto> toListDto(List<Edition> editions);
 
-    @Named("countDuration")
-    static Double countTotalDuration(Set<Track> tracks) {
-        return tracks.stream().map(track -> track.getDuration()).reduce(0.0, Double::sum);
+    @Named("countTotalDuration")
+    static LocalTime countTotalDuration(Set<Track> tracks) {
+        return tracks.stream().map(Track::getDuration)
+                .reduce(LocalTime.of(00,00,00), (currentSum, element) ->
+                        currentSum.plusHours(element.getHour()).plusMinutes(element.getMinute()).plusSeconds(element.getSecond())
+                    );
+
+
     }
 
 }

@@ -1,7 +1,8 @@
 package com.taisiia.musicApp.controller;
 
-import com.taisiia.musicApp.domain.dao.Edition;
-import com.taisiia.musicApp.repository.EditionRepository;
+import com.taisiia.musicApp.domain.dto.EditionDto;
+import com.taisiia.musicApp.mapper.EditionMapper;
+import com.taisiia.musicApp.service.EditionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,16 +15,17 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/editions")
 public class EditionController {
-    private final EditionRepository editionRepository;
+    private final EditionMapper editionMapper;
+    private final EditionService editionService;
 
     @GetMapping("/{id}")
-    public Edition findEditionById(@PathVariable Long id) {
-        return editionRepository.findById(id).orElseThrow(()->new RuntimeException("Not found entity"));
+    public EditionDto findEditionById(@PathVariable Long id) {
+        return editionMapper.toDto(editionService.findById(id));
     }
 
     @GetMapping
-    public List<Edition> getEditions() {
-        return editionRepository.findAll();
+    public List<EditionDto> getEditions() {
+        return editionMapper.toListDto(editionService.getAllEditions());
     }
 
 }
