@@ -1,0 +1,27 @@
+INSERT into edition (id,name) values (1,'Original release');
+INSERT into edition (id,name) values (2,'North American and European iTunes standard edition');
+
+INSERT into edition_track (edition_id, track_id) values (1,1);
+INSERT into edition_track (edition_id, track_id) values (1,2);
+INSERT into edition_track (edition_id, track_id) values (1,3);
+INSERT into edition_track (edition_id, track_id) values (1,4);
+INSERT into edition_track (edition_id, track_id) values (1,5);
+INSERT into edition_track (edition_id, track_id) values (1,6);
+INSERT into edition_track (edition_id, track_id) values (1,7);
+INSERT into edition_track (edition_id, track_id) values (1,8);
+INSERT into edition_track (edition_id, track_id) values (1,9);
+INSERT into edition_track (edition_id, track_id) values (1,10);
+INSERT into edition_track (edition_id, track_id) values (1,11);
+INSERT into edition_track (edition_id, track_id) values (2,1);
+INSERT into edition_track (edition_id, track_id) values (2,12);
+INSERT into edition_track (edition_id, track_id) values (2,2);
+INSERT into edition_track (edition_id, track_id) values (2,3);
+INSERT into edition_track (edition_id, track_id) values (2,4);
+INSERT into edition_track (edition_id, track_id) values (2,5);
+INSERT into edition_track (edition_id, track_id) values (2,6);
+INSERT into edition_track (edition_id, track_id) values (2,13);
+INSERT into edition_track (edition_id, track_id) values (2,14);
+INSERT into edition_track (edition_id, track_id) values (2,15);
+INSERT into edition_track (edition_id, track_id) values (2,16);
+INSERT into edition_track (edition_id, track_id) values (2,11);
+INSERT into edition_track (edition_id, track_id) values (2,17);
