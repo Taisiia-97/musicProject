@@ -5,8 +5,6 @@ import com.taisiia.musicApp.exception.NotFoundException
 import com.taisiia.musicApp.repository.TrackRepository
 import spock.lang.Specification
 
-import javax.persistence.EntityNotFoundException
-
 class TrackServiceSpec extends Specification {
 
     def trackRepository = Mock(TrackRepository)
@@ -54,5 +52,6 @@ class TrackServiceSpec extends Specification {
         def result = trackService.getAllTracks();
         then:
         result == trackList
+
     }
 }
