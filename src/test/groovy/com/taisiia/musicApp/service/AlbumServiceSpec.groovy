@@ -16,7 +16,7 @@ class AlbumServiceSpec extends Specification {
 
     def albumService = new AlbumService(albumRepository, editionRepository)
 
-    
+
 
     def "should find album by editionId"() {
 
